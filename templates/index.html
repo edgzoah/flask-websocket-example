@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Chat Room</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+</head>
+<body>
+<script type="text/javascript">
+  socket = io()
+  socket.connect('http://127.0.0.1:5000/');
+  socket.on('connect', function(){
+    socket.send('user connected')
+  });
+  socket.on('message', function(msg){
+    document.getElementById('messages').innerHTML += '<li>'+msg+'</li>'
+  });
+
+  function send() {
+    socket.send(document.getElementById('mymessage').value);
+    document.getElementById('mymessage').value = '';
+  };
+</script>
+<div id="messages"></div>
+<input type="text" id="mymessage">
+<input type="button" value="Send" id="send" onclick="send()">
+</body>
+</html>
