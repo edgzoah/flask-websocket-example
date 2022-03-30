@@ -2,4 +2,4 @@
 flask-socketio library example usage\
 requirements:\
 flask\
-flask-socketio\
+flask-socketio
