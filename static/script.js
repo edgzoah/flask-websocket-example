@@ -12,9 +12,7 @@ function send() {
   document.getElementById('mymessage').value = '';
 };
 
-socket.on('disconnect', function (){
-  document.getElementById('messages').innerHTML += '<li>'+'uzytkownik rozloczyl sie :('+'</li>'
-});
+
 window.onbeforeunload = function () {
 socket.send('user disconnected')
 }
